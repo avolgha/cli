@@ -38,19 +38,34 @@ std::string formatted(OutputType type, int foregroundData, int backgroundData)
 			typeData = 1;
 			break;
 		case OutputType::UNDERLINE:
-			typeData = 2;
+			typeData = 4;
 			break;
 		default:
 			return "";
 	}
-	std::string s = "\033[%type%;%fore%;%back%m";
+	std::string s;
+	if (backgroundData == -1) {
+		s = "\033[%type%;%fore%m";
+	} else {
+		s = "\033[%type%;%fore%;%back%m";
+	}
 	replace(s, "%type%", std::to_string(typeData));
 	replace(s, "%fore%", std::to_string(foregroundData));
-	replace(s, "%back%", std::to_string(backgroundData));
+	if (backgroundData != -1) {
+		replace(s, "%back%", std::to_string(backgroundData));
+	}
 	return s;
 }
 
-void Logger::print(char *message[], OutputType type, Color *foreground, Color *background)
+void Logger::print(std::string message, OutputType type, Color *foreground, Color *background)
 {
-	printf("%s%s %s%s%s", "\033[0;36m", "[Logger]", formatted(type, foreground->getData(), background->getData()), message, "\033[0m");
+	std::string s = "\033[0;35m[Logger] %f%%m%\033[0m";
+	if (background == NULL) {
+		replace(s, "%f%", formatted(type, foreground->getData(), -1));
+	} else {
+		replace(s, "%f%", formatted(type, foreground->getData(), background->getData()));
+	}
+	replace(s, "%m%", message);
+
+	std::cout << s << std::endl;
 }
