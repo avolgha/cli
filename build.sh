@@ -12,12 +12,12 @@
 last_seen="$PWD"
 cd '/home/marius/work/cli'
 
-# remove the builddir folder if exists and create a new one
-if [ -d 'builddir' ]; then
-	rm -r builddir
+# remove the build folder if exists and create a new one
+if [ -d 'build' ]; then
+	rm -r build
 fi
-mkdir builddir
-cd builddir
+mkdir build
+cd build
 
 # Run cmake build process
 cmake -DCMAKE_C_FLAGS='-fpermissive' ..

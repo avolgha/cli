@@ -11,27 +11,9 @@
 #include <string>
 #include <vector>
 
-struct Argument
-{
-	std::string name;
-	std::string description;
-	void* callback;	
-};
-
 class Parser
 {
 public:
-	void addArgument(std::string name, std::string description, void* callback)
-	{
-		Argument argument = {
-			name,
-			description,
-			callback
-		};
-
-		arguments.push_back(argument);
-	}
-
 	std::string getCalled()
 	{
 		return Parser::called;
@@ -46,7 +28,6 @@ public:
 private:
 	std::string called;
 	std::string other;
-	std::vector<Argument> arguments;
 };
 
 #endif /* SRC_PARSER_HPP_ */

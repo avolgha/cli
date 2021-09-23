@@ -10,22 +10,7 @@
 #include <stdio.h>
 
 #include "logger.hpp"
-
-void replace(std::string& str, const std::string& find, const std::string& replace)
-{
-	std::size_t position{};
-
-	while((position = str.find(find)) != std::string::npos)
-	{
-		str.erase(position, find.size());
-		str.insert(position, replace);
-	}
-}
-
-int Color::getData()
-{
-	return Color::data;
-}
+#include "utility.hpp"
 
 std::string formatted(OutputType type, int foregroundData, int backgroundData)
 {

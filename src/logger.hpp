@@ -9,11 +9,7 @@
 #define SRC_LOGGER_HPP_
 
 #include <string>
-
-/**
- * Replace a content ('find') in a string ('message') with a new sequence ('replace')
- */
-void replace(std::string& message, const std::string& find, const std::string& replace);
+#include "utility.hpp"
 
 enum OutputType
 {
@@ -28,7 +24,10 @@ public:
 		Color::data = data;
 	}
 
-	int getData();
+	int getData()
+	{
+		return Color::data;
+	}
 private:
 	int data;
 };
@@ -63,9 +62,6 @@ public:
 	void print(std::string message, OutputType type, Color *foreground, Color *background);
 };
 
-/**
- * Creates an ANSII-sequence with the given type, foreground color, and background color
- */
 std::string formatted(OutputType type, int *foregroundData, int *backgroundData);
 
 #endif /* SRC_LOGGER_HPP_ */
