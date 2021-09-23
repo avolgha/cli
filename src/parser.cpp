@@ -1,20 +1,21 @@
+#include "config.hpp"
 #include "parser.hpp"
 #include "utility.hpp"
 
 #include <iostream>
 
-// TODO
 void sendHelp()
 {
-	std::string helpMessage = "\
+	/*std::string helpMessage = "\
 CLI-Helper for many things\
 \
 | Created by avolgha, 2021 |\
 \
  Commands\
  	help [command]       look at the help message of an specific command or for the program in general\
-";
+";*/
 
+	std::string helpMessage = getHelpMessage();
 	std::cout << helpMessage << "\n";
 }
 
