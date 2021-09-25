@@ -8,4 +8,4 @@
 
 Checked|Short|Description|[Location]
 ---|---|---|---
-✘|Help message|Make the help message readable from a file so that it isn't hardcoded in the code|`src/parser.cpp`
+✓|Help message|Make the help message readable from a file so that it isn't hardcoded in the code|`src/head/utility.hpp`

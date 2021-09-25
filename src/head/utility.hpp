@@ -17,7 +17,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-std::string getDefaultMessage();
+std::string getDefaultHelpMessage();
 std::string getHomeDir();
 void createHelpMessageFile();
 std::string getHelpMessage();

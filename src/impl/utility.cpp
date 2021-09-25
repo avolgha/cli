@@ -8,7 +8,7 @@
 
 #include "../head/utility.hpp"
 
-std::string getDefaultMessage()
+std::string getDefaultHelpMessage()
 {
 	return "\n\
 CLI-Helper for many things&n&\n\
@@ -32,7 +32,7 @@ void createHelpMessageFile()
 	if (doesFileExists(messageFilePath))
 		return;
 
-	std::string msg = getDefaultMessage();
+	std::string msg = getDefaultHelpMessage();
 	createFile(messageFilePath, msg);
 }
 
