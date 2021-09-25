@@ -1,9 +1,10 @@
 project (cli)
 
 add_executable(cli 
-		               		src/cli.cpp
-		src/utility.hpp	
-		src/config.hpp
-		src/logger.hpp  	src/logger.cpp
-		src/parser.hpp  	src/parser.cpp
+				    		src/cli.cpp
+		src/including.hpp
+		src/head/utility.hpp	src/impl/utility.cpp
+		src/head/logger.hpp  	src/impl/logger.cpp
+		src/head/commands.hpp	src/impl/commands.cpp
+		src/head/parser.hpp  	src/impl/parser.cpp
 	)

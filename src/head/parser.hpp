@@ -9,7 +9,8 @@
 #define SRC_PARSER_HPP_
 
 #include <string>
-#include <vector>
+
+#include "utility.hpp"
 
 class Parser
 {

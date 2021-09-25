@@ -1,8 +1,12 @@
-#include "config.hpp"
-#include "parser.hpp"
-#include "utility.hpp"
+/*
+ * parser.cpp
+ *
+ *  Created on: 22 Sept 2021
+ *      Author: marius
+ */
 
-#include <iostream>
+
+#include "../head/parser.hpp"
 
 void Parser::parse(int argc, char *argv[])
 {

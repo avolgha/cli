@@ -1,27 +1,12 @@
 /*
- * utility.hpp
+ * utility.cpp
  *
- * 	Created on: 22 Sept 2021
- * 	    Author: marius
+ *  Created on: 22 Sept 2021
+ *      Author: marius
  */
 
-#ifndef SRC_UTILITY_HPP_
-#define SRC_UTILITY_HPP_
 
-#include <algorithm>
-#include <cctype>
-#include <string>
-#include <filesystem>
-#include <fstream>
-#include <unistd.h>
-#include <sys/types.h>
-#include <pwd.h>
-#include <iostream>
-
-bool doesFileExists(std::string path);
-void createFile(std::string& path, std::string& content);
-std::string readFile(std::string& path);
-void replace(std::string& str, const std::string& find, const std::string& replace);
+#include "../head/utility.hpp"
 
 std::string getDefaultMessage()
 {
@@ -132,5 +117,3 @@ std::string readFile(std::string& path)
 
 	return full;
 }
-
-#endif /* SRC_UTILITY_HPP_ */

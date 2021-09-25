@@ -1,9 +1,16 @@
-#include <iostream>
+/*
+ * cli.cpp
+ *
+ *  Created on: 20 Sept 2021
+ *      Author: marius
+ */
+
+
 #include <string>
 
-#include "logger.hpp"
-#include "parser.hpp"
-#include "utility.hpp"
+#include "head/logger.hpp"
+#include "head/parser.hpp"
+#include "head/utility.hpp"
 
 int main(int argc, char* argv[])
 {

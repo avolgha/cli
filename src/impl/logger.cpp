@@ -6,11 +6,7 @@
  */
 
 
-#include <iostream>
-#include <stdio.h>
-
-#include "logger.hpp"
-#include "utility.hpp"
+#include "../head/logger.hpp"
 
 std::string formatted(OutputType type, int foregroundData, int backgroundData)
 {
@@ -50,7 +46,7 @@ void Logger::print(std::string message, OutputType type, Color *foreground, Colo
 	} else {
 		replace(s, "%f%", formatted(type, foreground->getData(), background->getData()));
 	}
-	replace(s, "%m%", message);
+	replace(s, messageFormatPattern, message);
 
 	std::cout << s << std::endl;
 }
