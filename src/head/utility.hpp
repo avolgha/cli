@@ -13,9 +13,11 @@
 #include <fstream>
 #include <iostream>
 #include <pwd.h>
+#include <sstream>
 #include <string>
 #include <sys/types.h>
 #include <unistd.h>
+#include <vector>
 
 std::string getDefaultHelpMessage();
 std::string getHomeDir();
@@ -28,5 +30,6 @@ bool doesFileExists(std::string path);
 void createParents(std::string& path);
 void createFile(std::string& path, std::string& content);
 std::string readFile(std::string& path);
+std::vector<std::string> split(std::string& string, char& splitChar);
 
 #endif /* SRC_UTILITY_HPP_ */

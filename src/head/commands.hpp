@@ -13,10 +13,10 @@
 
 #include "logger.hpp"
 #include "parser.hpp"
+#include "generator/project.hpp"
 
 void process_generate(Parser parser);
-void process_unknown(Parser parser);
 
-void process(Parser& parser);
+bool process(Parser& parser);
 
 #endif /* SRC_COMMANDS_HPP_ */

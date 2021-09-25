@@ -8,6 +8,7 @@
 
 #include <string>
 
+#include "head/commands.hpp"
 #include "head/logger.hpp"
 #include "head/parser.hpp"
 #include "head/utility.hpp"
@@ -25,10 +26,11 @@ int main(int argc, char* argv[])
 		sendHelp();
 	} else if (called == "version" || called == "v") 
 	{
-		
+		// TODO
 	} else
 	{
-		logger.error("Unknown command '" + called + "'.");
+		if (!process(parser))
+			logger.error("Unknown command '" + called + "'.");
 	}
 
 	return EXIT_SUCCESS;

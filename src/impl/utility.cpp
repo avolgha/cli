@@ -74,7 +74,7 @@ bool doesFileExists(std::string path)
 
 void createParents(std::string& path)
 {
-	// TODO
+	std::filesystem::create_directories(std::filesystem::path{path.c_str()});
 }
 
 void createFile(std::string& path, std::string& content)
@@ -116,4 +116,18 @@ std::string readFile(std::string& path)
 	}
 
 	return full;
+}
+
+std::vector<std::string> split(std::string& string, char& splitChar)
+{
+	std::vector<std::string> strings;
+	std::istringstream stream(string);
+
+	std::string current;
+	while (std::getline(stream, current, splitChar))
+	{
+		strings.push_back(current);
+	}
+
+	return strings;
 }
