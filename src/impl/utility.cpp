@@ -74,7 +74,9 @@ bool doesFileExists(std::string path)
 
 void createParents(std::string& path)
 {
-	std::filesystem::create_directories(std::filesystem::path{path.c_str()});
+	int lastIndex = path.find_last_of('/');
+	std::string parents = path.substr(0, lastIndex);
+	std::filesystem::create_directories(std::filesystem::path{parents.c_str()});
 }
 
 void createFile(std::string& path, std::string& content)
