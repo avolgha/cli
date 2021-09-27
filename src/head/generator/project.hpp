@@ -10,6 +10,9 @@
 
 #include <string>
 
-void createProject(std::string& name, std::string& lang, std::string& tool);
+namespace cli::generator::project
+{
+    void createProject(std::string& name, std::string& lang, std::string& tool);
+}
 
 #endif /* SRC_PROJECT_HPP_ */

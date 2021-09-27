@@ -10,7 +10,7 @@
 #include "../head/parser.hpp"
 #include "../head/utility.hpp"
 
-Logger commandLogger;
+cli::logger::Logger commandLogger;
 
 bool is(std::string& reference, std::vector<std::string> check) {
     for (std::string string : check)
@@ -48,10 +48,10 @@ bool isLanguageSupported(std::string& lang)
 }
 
 char splitChar = ' ';
-void process_generate(Parser parser)
+void cli::commands::process_generate(cli::parser::Parser parser)
 {
     std::string rest = parser.getRest();
-    std::vector<std::string> splitted = split(rest, splitChar);
+    std::vector<std::string> splitted = cli::utility::split(rest, splitChar);
 
     // cli generate project <name> <lang> [tool] 
     if (splitted.size() == 0)
@@ -61,7 +61,7 @@ p[roject]       Generate a project" << "\n";
     } else
     {
         std::string type = splitted.at(0);
-        lowerCase(type);
+        cli::utility::lowerCase(type);
         if (is(type, std::vector<std::string>{"project", "p"}))
         {
             if (splitted.size() == 3 || splitted.size() == 4)
@@ -76,7 +76,7 @@ p[roject]       Generate a project" << "\n";
                     tool = getDefaultTool(lang);
                 }
 
-                lowerCase(lang);
+                cli::utility::lowerCase(lang);
                 if (!isLanguageSupported(lang))
                 {
                     commandLogger.error("Language '" + lang + "' is not supported.");
@@ -89,7 +89,7 @@ p[roject]       Generate a project" << "\n";
                     exit(1);
                 }
 
-                createProject(name, lang, tool);
+                cli::generator::project::createProject(name, lang, tool);
             } else
             {
                 commandLogger.error("Use: cli generate project <name> <lang> [tool]");
@@ -101,12 +101,12 @@ p[roject]       Generate a project" << "\n";
     }
 }
 
-bool process(Parser& parser)
+bool cli::commands::process(cli::parser::Parser& parser)
 {
     std::string called = parser.getCalled();
     if (is(called, std::vector<std::string>{"generate", "g"}))
     {
-        process_generate(parser);
+        cli::commands::process_generate(parser);
         return true;
     }
     return false;

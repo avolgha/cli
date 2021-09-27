@@ -15,8 +15,11 @@
 #include "parser.hpp"
 #include "generator/project.hpp"
 
-void process_generate(Parser parser);
+namespace cli::commands
+{
+    void process_generate(cli::parser::Parser parser);
 
-bool process(Parser& parser);
+    bool process(cli::parser::Parser& parser);
+}
 
 #endif /* SRC_COMMANDS_HPP_ */

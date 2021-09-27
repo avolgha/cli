@@ -15,21 +15,22 @@
 
 int main(int argc, char* argv[])
 {
-	Logger logger;
-	Parser parser;
+	cli::logger::Logger logger;
+	cli::parser::Parser parser;
 
 	parser.parse(argc, argv);
 	std::string called = parser.getCalled();
 
 	if (called == "help" || called == "h")
 	{
-		sendHelp();
+		cli::utility::help::sendHelp();
 	} else if (called == "version" || called == "v") 
 	{
 		// TODO
 	} else
 	{
-		if (!process(parser))
+		bool process = cli::commands::process(parser);
+		if (!process)
 			logger.error("Unknown command '" + called + "'.");
 	}
 

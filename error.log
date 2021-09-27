@@ -1,0 +1,2 @@
+/usr/bin/ld: CMakeFiles/cli.dir/src/impl/commands.cpp.o: in function `process_generate(cli::parser::Parser)':
+commands.cpp:(.text+0xca9): undefined reference to `cli::generator::project::createProject(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)'

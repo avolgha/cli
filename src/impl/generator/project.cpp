@@ -11,24 +11,24 @@
 #include "../../head/utility.hpp"
 #include "../../head/generator/project.hpp"
 
-Logger projectLogger;
+cli::logger::Logger projectLogger;
 
 void cf(std::string path, std::string content)
 {
-    createFile(path, content);
+    cli::utility::fs::createFile(path, content);
 }
 
 void ccf(std::string name, std::string main, std::string mainContent)
 {
     std::string lname = name;
-    lowerCase(lname);
+    cli::utility::lowerCase(lname);
     cf(name + "/CMakeLists.txt", "project (" + lname + ")\n\
 \n\
 add_executable(" + lname+ " src/" + main + ")");
     cf(name + "/src/" + main, mainContent);
 }
 
-void createProject(std::string& name, std::string& lang, std::string& tool)
+void cli::generator::project::createProject(std::string& name, std::string& lang, std::string& tool)
 {
     if (lang == "java") 
     {
@@ -111,7 +111,7 @@ public class Main {\n\
     } else if (lang == "cpp" || lang == "cmake")
     {
         std::string lname = name;
-        lowerCase(lname);
+        cli::utility::lowerCase(lname);
         ccf(name, lname + ".cpp", "#include <iostream>\n\
 \n\
 int main(int argc, char **argv)\n\
@@ -123,7 +123,7 @@ int main(int argc, char **argv)\n\
     } else if (lang == "c")
     {
         std::string lname = name;
-        lowerCase(lname);
+        cli::utility::lowerCase(lname);
         ccf(name, lname + ".c", "#include <iostream>\n\
 \n\
 int main(int argc, char **argv)\n\

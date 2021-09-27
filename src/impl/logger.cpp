@@ -8,17 +8,17 @@
 
 #include "../head/logger.hpp"
 
-std::string formatted(OutputType type, int foregroundData, int backgroundData)
+std::string cli::logger::formatted(cli::logger::OutputType type, int foregroundData, int backgroundData)
 {
 	int typeData;
 	switch (type) {
-		case OutputType::NORMAL:
+		case cli::logger::OutputType::NORMAL:
 			typeData = 0;
 			break;
-		case OutputType::BOLD:
+		case cli::logger::OutputType::BOLD:
 			typeData = 1;
 			break;
-		case OutputType::UNDERLINE:
+		case cli::logger::OutputType::UNDERLINE:
 			typeData = 4;
 			break;
 		default:
@@ -30,23 +30,23 @@ std::string formatted(OutputType type, int foregroundData, int backgroundData)
 	} else {
 		s = "\033[%type%;%fore%;%back%m";
 	}
-	replace(s, "%type%", std::to_string(typeData));
-	replace(s, "%fore%", std::to_string(foregroundData));
+	cli::utility::replace(s, "%type%", std::to_string(typeData));
+	cli::utility::replace(s, "%fore%", std::to_string(foregroundData));
 	if (backgroundData != -1) {
-		replace(s, "%back%", std::to_string(backgroundData));
+		cli::utility::replace(s, "%back%", std::to_string(backgroundData));
 	}
 	return s;
 }
 
-void Logger::print(std::string message, OutputType type, Color *foreground, Color *background)
+void cli::logger::Logger::print(std::string message, cli::logger::OutputType type, cli::logger::Color *foreground, cli::logger::Color *background)
 {
 	std::string s = "\033[0;35m[Logger] %f%%m%\033[0m";
 	if (background == NULL) {
-		replace(s, "%f%", formatted(type, foreground->getData(), -1));
+		cli::utility::replace(s, "%f%", cli::logger::formatted(type, foreground->getData(), -1));
 	} else {
-		replace(s, "%f%", formatted(type, foreground->getData(), background->getData()));
+		cli::utility::replace(s, "%f%", cli::logger::formatted(type, foreground->getData(), background->getData()));
 	}
-	replace(s, messageFormatPattern, message);
+	cli::utility::replace(s, messageFormatPattern, message);
 
 	std::cout << s << std::endl;
 }

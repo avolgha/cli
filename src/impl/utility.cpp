@@ -8,7 +8,7 @@
 
 #include "../head/utility.hpp"
 
-std::string getDefaultHelpMessage()
+std::string cli::utility::help::getDefaultHelpMessage()
 {
 	return "\n\
 CLI-Helper for many things&n&\n\
@@ -20,43 +20,43 @@ CLI-Helper for many things&n&\n\
 ";
 }
 
-std::string getHomeDir()
+std::string cli::utility::getHomeDir()
 {
 	struct passwd *pw = getpwuid(getuid());
 	return std::string(pw->pw_dir);
 }
 
-std::string messageFilePath = getHomeDir() + "/.config/mgc-cli/header.txt";
-void createHelpMessageFile()
+std::string messageFilePath = cli::utility::getHomeDir() + "/.config/mgc-cli/header.txt";
+void cli::utility::help::createHelpMessageFile()
 {
-	if (doesFileExists(messageFilePath))
+	if (cli::utility::fs::doesFileExists(messageFilePath))
 		return;
 
 	std::string msg = getDefaultHelpMessage();
-	createFile(messageFilePath, msg);
+	cli::utility::fs::createFile(messageFilePath, msg);
 }
 
-std::string getHelpMessage()
+std::string cli::utility::help::getHelpMessage()
 {
-	createHelpMessageFile();
+	cli::utility::help::createHelpMessageFile();
 
-	std::string msg = readFile(messageFilePath);
+	std::string msg = cli::utility::fs::readFile(messageFilePath);
 	replace(msg, "&n&", "\n");
 	return msg;
 }
 
-void lowerCase(std::string &data)
+void cli::utility::lowerCase(std::string &data)
 {
 	std::transform(data.begin(), data.end(), data.begin(), [](unsigned char c){ return std::tolower(c); });
 }
 
-void sendHelp()
+void cli::utility::help::sendHelp()
 {
-	std::string helpMessage = getHelpMessage();
+	std::string helpMessage = cli::utility::help::getHelpMessage();
 	std::cout << helpMessage << "\n";
 }
 
-void replace(std::string& str, const std::string& find, const std::string& replace)
+void cli::utility::replace(std::string& str, const std::string& find, const std::string& replace)
 {
 	std::size_t position{};
 
@@ -67,19 +67,19 @@ void replace(std::string& str, const std::string& find, const std::string& repla
 	}
 }
 
-bool doesFileExists(std::string path)
+bool cli::utility::fs::doesFileExists(std::string path)
 {
 	return std::filesystem::exists(std::filesystem::path{path.c_str()});
 }
 
-void createParents(std::string& path)
+void cli::utility::fs::createParents(std::string& path)
 {
 	int lastIndex = path.find_last_of('/');
 	std::string parents = path.substr(0, lastIndex);
 	std::filesystem::create_directories(std::filesystem::path{parents.c_str()});
 }
 
-void createFile(std::string& path, std::string& content)
+void cli::utility::fs::createFile(std::string& path, std::string& content)
 {
 	if (doesFileExists(path)) return;
 
@@ -92,7 +92,7 @@ void createFile(std::string& path, std::string& content)
 	}
 }
 
-std::string readFile(std::string& path)
+std::string cli::utility::fs::readFile(std::string& path)
 {
 	std::ifstream inFile;
 	inFile.open(path);
@@ -120,7 +120,7 @@ std::string readFile(std::string& path)
 	return full;
 }
 
-std::vector<std::string> split(std::string& string, char& splitChar)
+std::vector<std::string> cli::utility::split(std::string& string, char& splitChar)
 {
 	std::vector<std::string> strings;
 	std::istringstream stream(string);

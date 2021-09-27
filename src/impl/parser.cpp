@@ -8,15 +8,15 @@
 
 #include "../head/parser.hpp"
 
-void Parser::parse(int argc, char *argv[])
+void cli::parser::Parser::parse(int argc, char *argv[])
 {
 	if (argc == 1)
 	{
-		sendHelp();
+		cli::utility::help::sendHelp();
 	} else 
 	{
 		std::string call(argv[1]);
-		lowerCase(call);
+		cli::utility::lowerCase(call);
 		Parser::called = call;
 
 		if (argc >= 3)

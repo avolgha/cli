@@ -19,17 +19,28 @@
 #include <unistd.h>
 #include <vector>
 
-std::string getDefaultHelpMessage();
-std::string getHomeDir();
-void createHelpMessageFile();
-std::string getHelpMessage();
-void lowerCase(std::string &data);
-void sendHelp();
-void replace(std::string& str, const std::string& find, const std::string& replace);
-bool doesFileExists(std::string path);
-void createParents(std::string& path);
-void createFile(std::string& path, std::string& content);
-std::string readFile(std::string& path);
-std::vector<std::string> split(std::string& string, char& splitChar);
+namespace cli::utility
+{
+    std::string getHomeDir();
+    void lowerCase(std::string &data);
+    void replace(std::string& str, const std::string& find, const std::string& replace);
+    std::vector<std::string> split(std::string& string, char& splitChar);
+}
+
+namespace cli::utility::help
+{
+    std::string getDefaultHelpMessage();
+    void createHelpMessageFile();
+    std::string getHelpMessage();
+    void sendHelp();
+}
+
+namespace cli::utility::fs
+{
+    bool doesFileExists(std::string path);
+    void createParents(std::string& path);
+    void createFile(std::string& path, std::string& content);
+    std::string readFile(std::string& path);
+}
 
 #endif /* SRC_UTILITY_HPP_ */
