@@ -22,6 +22,7 @@
 namespace cli::utility
 {
     std::string getHomeDir();
+    std::string cwd();
     void lowerCase(std::string &data);
     void replace(std::string& str, const std::string& find, const std::string& replace);
     std::vector<std::string> split(std::string& string, char& splitChar);

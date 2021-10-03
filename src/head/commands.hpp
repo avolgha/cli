@@ -11,8 +11,10 @@
 #include <string>
 #include <vector>
 
+#include "buildsystem.hpp"
 #include "logger.hpp"
 #include "parser.hpp"
+#include "utility.hpp"
 #include "generator/project.hpp"
 
 namespace cli::commands

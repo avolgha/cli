@@ -18,6 +18,8 @@ CLI-Helper for many things&n&\n\
  Commands&n&\n\
     help [command]      help message of command or program in general&n&\n\
 	version             prints the version of the current running application&n&\n\
+	build, b            build current directory (same as compile)&n&\n\
+	compile, c          compile current directory (same as build)&n&\n\
 ";
 }
 
@@ -25,6 +27,13 @@ std::string cli::utility::getHomeDir()
 {
 	struct passwd *pw = getpwuid(getuid());
 	return std::string(pw->pw_dir);
+}
+
+std::string cli::utility::cwd()
+{
+	char buffer[FILENAME_MAX];
+	getcwd(buffer, FILENAME_MAX);
+	return buffer;
 }
 
 std::string messageFilePath = cli::utility::getHomeDir() + "/.config/mgc-cli/header.txt";

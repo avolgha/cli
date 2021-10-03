@@ -108,6 +108,11 @@ bool cli::commands::process(cli::parser::Parser& parser)
     {
         cli::commands::process_generate(parser);
         return true;
+    } else if (is(called, std::vector<std::string>{"build", "compile", "b", "c"}))
+    {
+        std::string dir = cli::utility::cwd();
+        cli::entities::buildsystem::runBuildSystem(dir);
+        return true;
     }
     return false;
 }

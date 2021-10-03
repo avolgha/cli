@@ -29,9 +29,10 @@ int main(int argc, char* argv[])
 		std::cout << "Running cli v0.0.1\n";
 	} else
 	{
-		bool process = cli::commands::process(parser);
-		if (!process || !(called == ""))
+		bool error = !cli::commands::process(parser);
+		if (error || (error && called == "")) {
 			logger.error("Unknown command '" + called + "'.");
+		}
 	}
 
 	return EXIT_SUCCESS;

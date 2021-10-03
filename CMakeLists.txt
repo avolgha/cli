@@ -36,6 +36,8 @@ add_executable(cli
 		src/head/commands.hpp	src/impl/commands.cpp
 		src/head/parser.hpp  	src/impl/parser.cpp
 
+		src/head/buildsystem.hpp          src/impl/buildsystem.cpp
+		
 		src/head/generator/project.hpp    src/impl/generator/project.cpp
 
 				    		
