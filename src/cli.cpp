@@ -26,11 +26,11 @@ int main(int argc, char* argv[])
 		cli::utility::help::sendHelp();
 	} else if (called == "version" || called == "v") 
 	{
-		// TODO
+		std::cout << "Running cli v0.0.1\n";
 	} else
 	{
 		bool process = cli::commands::process(parser);
-		if (!process)
+		if (!process || !(called == ""))
 			logger.error("Unknown command '" + called + "'.");
 	}
 

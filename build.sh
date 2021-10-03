@@ -20,7 +20,7 @@ mkdir build
 cd build
 
 # Run cmake build process
-cmake -DCMAKE_C_FLAGS='-fpermissive' ..
+cmake ..
 cmake --build .
 
 # Finish

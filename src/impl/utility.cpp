@@ -17,6 +17,7 @@ CLI-Helper for many things&n&\n\
 &n&\n\
  Commands&n&\n\
     help [command]      help message of command or program in general&n&\n\
+	version             prints the version of the current running application&n&\n\
 ";
 }
 
